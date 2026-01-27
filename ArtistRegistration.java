@@ -6,6 +6,10 @@ public class ArtistRegistration{
 
         int Experience;
 
+        System.out.println("""
+                Artist Registration!!!
+                (Free registration for Artist Commission Support!)
+                """);
         strTagname = UserInput("Enter username: ");
         strArtType = UserInput("Traditional or Digital?: ");
         strTools = UserInput("Tools used: ");
