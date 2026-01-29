@@ -1,3 +1,4 @@
+package activities;
 import java.util.*;
 public class Wage {
     public static void main(String[] args) {

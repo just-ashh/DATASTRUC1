@@ -1,3 +1,4 @@
+package activities;
 import java.util.Scanner;
 
 public class GroceryReceipt {

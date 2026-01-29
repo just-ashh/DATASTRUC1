@@ -1,3 +1,4 @@
+package activities;
 import java.util.*;
 
 public class ArtistRegistration{
