@@ -1,0 +1,34 @@
+Registration
+1. DVD
+2. VCD
+3. Tape
+Choice: 1
+
+Type: DVD
+Input title: Kung Fu Panda
+1. Horror
+2. Sci-fi
+3. Drama
+4. Comedy
+5. Cartoons
+Category: 4
+
+Minutes: 60
+Setting: China
+Transaction Type:
+1. Rental
+2. Sales
+Transaction: 2
+Price: 10
+Register another? (Y/N) 
+====== Reports ======
+For rent: 0
+For sale: 1
+VCD total: 0
+DVD total: 1
+Tape total: 0
+Horror movies: 0
+Sci-fi movies: 0
+Drama movies: 0
+Comedy movies: 1
+Catoons mvoies: 0
