@@ -1,38 +1,8 @@
-Milkway_
-Digital
-XPPen
-12
-Open!
-justash_
-Digital
-Display Tablet (XPPen Artist 12 2nd Gen)
-7
-Open
-justshinichi
+Willy_wonder11
 Digital
 Drawing Tablet
-15
+5
 Closed
-heartmush
-Digital
-Display Tablet
-11
-Open
-Neytirix
-Digital
-Display Tablet
-16
-Open
-Nebular_Cloud
-Traditional
-Gouache/Acrylic
-11
-Closed
-lovabledork12_
-Traditional
-Ink/Acrylic Pens
-9
-Open
 stranger_danger14
 Traditional
 Pencil/Ink
@@ -43,11 +13,41 @@ Digital
 Display Tablet
 19
 Closed
-Willy_wonder11
+Neytirix
+Digital
+Display Tablet
+16
+Open
+Nebular_Cloud
+Traditional
+Gouache/Acrylic
+11
+Closed
+Milkway_
+Digital
+XPPen
+12
+Open!
+lovabledork12_
+Traditional
+Ink/Acrylic Pens
+9
+Open
+justshinichi
 Digital
 Drawing Tablet
-5
+15
 Closed
+justasheee
+Digital
+Huion Display Kamvas
+6
+Open!
+heartmush
+Digital
+Display Tablet
+11
+Open
 cranking90s_
 Traditional
 Clay
