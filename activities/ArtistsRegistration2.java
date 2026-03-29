@@ -7,6 +7,8 @@ public class ArtistsRegistration2 {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
+        PrintWriter log = new PrintWriter(new FileWriter("DATASTRUC1/activities/ArtistRegisterationLogs.txt", true));
+
         // open txt file
         File file = new File("DATASTRUC1/activities/Artists.txt");
         Scanner FR = new Scanner(file);
@@ -33,14 +35,14 @@ public class ArtistsRegistration2 {
 
         FR.close();
 
-        userMenu(strTagname, strArtType, strTools, strCommissionStatus, aExperience, counter);
+        userMenu(strTagname, strArtType, strTools, strCommissionStatus, aExperience, counter, log);
 
         sc.close();
 
     }
 
     static void userMenu(String strTagname[], String strArtType[], String strTools[], String strCommissionStatus[],
-            int aExperience[], int counter) throws Exception {
+            int aExperience[], int counter, PrintWriter log) throws Exception {
         while (true) {
             System.out.println("""
                     === MENU ===
@@ -110,6 +112,14 @@ public class ArtistsRegistration2 {
 
                     counter++; // increase total count
                     System.out.println("Artist added at index " + insertIndex + "!");
+
+                    logResult(log, "[ADDED]");
+                    logResult(log, "Tagname: " + strTagname[insertIndex]);
+                    logResult(log, "Art Type: " + strArtType[insertIndex]);
+                    logResult(log, "Tools: " + strTools[insertIndex]);
+                    logResult(log, "Experience: " + aExperience[insertIndex] + " years");
+                    logResult(log, "Status: " + strCommissionStatus[insertIndex]);
+                    logResult(log, "=============================================");
 
                     // add to txt file to updt
                     try {
@@ -197,12 +207,23 @@ public class ArtistsRegistration2 {
                                 System.out.println("Tools: " + strTools[i]);
                                 System.out.println("Experience: " + aExperience[i] + " years");
                                 System.out.println("Commission status: " + strCommissionStatus[i]);
+
+                                logResult(log, "[SEARCHED ARTIST - INDEX]");
+                                logResult(log, "Tagname: " + strTagname[i]);
+                                logResult(log, "Art Type: " + strArtType[i]);
+                                logResult(log, "Tools: " + strTools[i]);
+                                logResult(log, "Experience: " + aExperience[i] + " years");
+                                logResult(log, "Status: " + strCommissionStatus[i]);
+                                logResult(log, "======================================");
+
                                 found = true; // if found true, display
                             }
                         }
 
                         if (!found) {
                             System.out.println("Artist not found."); // display if artist hasnt been found
+                            logResult(log, "[SEARCH] Artist not found");
+                            logResult(log, "======================================");
                         }
 
                     } else {
@@ -215,6 +236,7 @@ public class ArtistsRegistration2 {
                 case 3:
                     int editIndex = -1;
 
+                    displayList(strTagname, strArtType, strTools, strCommissionStatus, aExperience, counter, log);
                     while (true) {
                         try {
                             System.out.println("Enter an index to edit (0 - " + (counter - 1) + "): ");
@@ -264,6 +286,11 @@ public class ArtistsRegistration2 {
 
                         System.out.println("Artist updated successfully!");
 
+                        logResult(log, "[EDIT]");
+                        logResult(log, "Updated Artist at index " + editIndex);
+                        logResult(log, "Tagname: " + strTagname[editIndex]);
+                        logResult(log, "======================================");
+
                         try {
                             FileWriter fw = new FileWriter("DATASTRUC1/activities/Artists.txt");
                             for (int i = 0; i < counter; i++) {
@@ -286,6 +313,9 @@ public class ArtistsRegistration2 {
                     break;
                 // REMOVE AN ITEM/INDEX
                 case 4:
+
+                    displayList(strTagname, strArtType, strTools, strCommissionStatus, aExperience, counter, log);
+
                     System.out.println("Enter an artist's name to remove: ");
                     String deleteIndex = sc.nextLine().toLowerCase();
 
@@ -313,6 +343,10 @@ public class ArtistsRegistration2 {
                                     strTools[j] = strTools[j + 1];
                                     aExperience[j] = aExperience[j + 1];
                                     strCommissionStatus[j] = strCommissionStatus[j + 1];
+
+                                    logResult(log, "[DELETE]");
+                                    logResult(log, "Removed Tagname: " + strTagname[i]);
+                                    logResult(log, "======================================");
                                 }
                                 // Clear the last slot
                                 strTagname[counter - 1] = null;
@@ -365,14 +399,15 @@ public class ArtistsRegistration2 {
                             [2] Descending (Z-A)
                             """);
 
-                            int userChoice = sc.nextInt(); sc.nextLine();
+                    int userChoice = sc.nextInt();
+                    sc.nextLine();
                     for (int i = 0; i < counter - 1; i++) {
                         for (int j = 0; j < counter - i - 1; j++) {
 
                             if (strTagname[j] != null && strTagname[j + 1] != null &&
-                                ((userChoice == 1 && strTagname[j].compareToIgnoreCase(strTagname[j + 1]) > 0) ||
-                                 (userChoice == 2 && strTagname[j].compareToIgnoreCase(strTagname[j + 1]) < 0)
-                                )) {
+                                    ((userChoice == 1 && strTagname[j].compareToIgnoreCase(strTagname[j + 1]) > 0) ||
+                                            (userChoice == 2
+                                                    && strTagname[j].compareToIgnoreCase(strTagname[j + 1]) < 0))) {
 
                                 String tempTag = strTagname[j];
                                 strTagname[j] = strTagname[j + 1];
@@ -397,6 +432,13 @@ public class ArtistsRegistration2 {
                         }
                     }
 
+                    if (userChoice == 1)
+                        logResult(log, "Sorted in an ascending order.");
+                    else
+                        logResult(log, "Sorted in an Descending order.");
+
+                    logResult(log, "======================================");
+
                     System.out.println("Sorting done...");
 
                     // Save updated sorted file
@@ -411,10 +453,10 @@ public class ArtistsRegistration2 {
                         }
 
                         fw.close();
-                        if(userChoice == 1)
+                        if (userChoice == 1)
                             System.out.println("Artist sorted in an ascending order!");
                         else
-                            System.out.println("Artist sorted in a descending order!");
+                            System.out.println("Artist sorted in descending order!");
                     } catch (IOException e) {
                         System.out.println("Error occured: " + e.getMessage());
                     }
@@ -426,10 +468,16 @@ public class ArtistsRegistration2 {
                     for (int i = 0; i < counter; i++) {
                         System.out.println(i + " " + strTagname[i] + " " + strArtType[i] + " " + strTools[i] + " "
                                 + aExperience[i] + " " + strCommissionStatus[i]);
+
+                        logResult(log, i + " | " + strTagname[i] + " | " + strArtType[i]);
                     }
+
+                    logResult(log, "======================================");
                     break;
                 case 0:
                     System.out.println("Exiting program...");
+                    logResult(log, "Program closed...");
+                    log.close();
                     System.exit(0);
                     break;
                 default:
@@ -437,6 +485,30 @@ public class ArtistsRegistration2 {
                     break;
             }
         }
+    }
+
+    static void displayList(String[] strTagname, String[] strArtType, String[] strTools, String[] strCommissionStatus,
+            int[] aExperience, int counter, PrintWriter log) {
+
+        String header = "=== Artist List ===";
+        System.out.println(header);
+        log.println(header);
+
+        for (int i = 0; i < counter; i++) {
+            String line = i + " || " + strTagname[i] + " || " + strArtType[i] + " || " +
+                    strTools[i] + " || " + aExperience[i] + " years || " + strCommissionStatus[i];
+
+            System.out.println(line);
+            log.println(line);
+        }
+
+        log.flush();
+
+    }
+
+    static void logResult(PrintWriter log, String message) {
+        log.println(message);
+        log.flush();
     }
 
 }

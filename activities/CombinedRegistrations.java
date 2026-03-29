@@ -21,7 +21,7 @@ public class CombinedRegistrations {
             userChoice = input.nextInt();
             input.nextLine();
 
-            switch (userChoice) {
+            switch (userChoice) { 
 
                 case 0:
                     System.out.println("Now exiting program...");

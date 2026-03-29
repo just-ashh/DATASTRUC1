@@ -1,0 +1,85 @@
+=== Artist List ===
+0 || Willy_wonder11 || Digital || Drawing Tablet || 5 years || Closed
+1 || stranger_danger14 || Traditional || Pencil/Ink || 5 years || Open
+2 || SamDoesArt || Digital || Display Tablet || 19 years || Closed
+3 || Neytirix || Digital || Display Tablet || 16 years || Open
+4 || Nebular_Cloud || Traditional || Gouache/Acrylic || 11 years || Closed
+5 || laracroft25 || Traditional || Watercolors and color pencils || 4 years || Closed
+6 || Milkway_ || Digital || XPPen || 12 years || Open!
+7 || lovabledork12_ || Traditional || Ink/Acrylic Pens || 9 years || Open
+8 || justshinichi || Digital || Drawing Tablet || 15 years || Closed
+9 || justasheee || Digital || Huion Display Kamvas || 6 years || Open!
+10 || heartmush || Digital || Display Tablet || 11 years || Open
+11 || cranking90s_ || Traditional || Clay || 13 years || Open
+=== Artist List ===
+0 || Willy_wonder11 || Digital || Drawing Tablet || 5 years || Closed
+1 || stranger_danger14 || Traditional || Pencil/Ink || 5 years || Open
+2 || SamDoesArt || Digital || Display Tablet || 19 years || Closed
+3 || Neytirix || Digital || Display Tablet || 16 years || Open
+4 || Nebular_Cloud || Traditional || Gouache/Acrylic || 11 years || Closed
+5 || NebularClouds_ || Digital || Wacom || 5 years || Open!
+6 || Milkway_ || Digital || XPPen || 12 years || Open!
+7 || lovabledork12_ || Traditional || Ink/Acrylic Pens || 9 years || Open
+8 || justshinichi || Digital || Drawing Tablet || 15 years || Closed
+9 || justasheee || Digital || Huion Display Kamvas || 6 years || Open!
+10 || heartmush || Digital || Display Tablet || 11 years || Open
+11 || cranking90s_ || Traditional || Clay || 13 years || Open
+[ADDED]
+Tagname: pompompurinFan345
+Art Type: Digital
+Tools: Display tablet
+Experience: 2 years
+Status: Closed
+=============================================
+[SEARCHED ARTIST - INDEX]
+Tagname: justasheee
+Art Type: Digital
+Tools: Huion Display Kamvas
+Experience: 6 years
+Status: Open!
+======================================
+=== Artist List ===
+0 || pompompurinFan345 || Digital || Display tablet || 2 years || Closed
+1 || cranking90s_ || Traditional || Clay || 13 years || Open
+2 || heartmush || Digital || Display Tablet || 11 years || Open
+3 || justasheee || Digital || Huion Display Kamvas || 6 years || Open!
+4 || justshinichi || Digital || Drawing Tablet || 15 years || Closed
+5 || lovabledork12_ || Traditional || Ink/Acrylic Pens || 9 years || Open
+6 || Milkway_ || Digital || XPPen || 12 years || Open!
+7 || Nebular_Cloud || Traditional || Gouache/Acrylic || 11 years || Closed
+8 || NebularClouds_ || Digital || Wacom || 5 years || Open!
+9 || Neytirix || Digital || Display Tablet || 16 years || Open
+10 || SamDoesArt || Digital || Display Tablet || 19 years || Closed
+11 || Willy_wonder11 || Digital || Drawing Tablet || 5 years || Closed
+[EDIT]
+Updated Artist at index 4
+Tagname: RockAndStoneDRG
+======================================
+=== Artist List ===
+0 || pompompurinFan345 || Digital || Display tablet || 2 years || Closed
+1 || cranking90s_ || Traditional || Clay || 13 years || Open
+2 || heartmush || Digital || Display Tablet || 11 years || Open
+3 || justasheee || Digital || Huion Display Kamvas || 6 years || Open!
+4 || RockAndStoneDRG || Digital || Viekk || 2 years || Closed!
+5 || lovabledork12_ || Traditional || Ink/Acrylic Pens || 9 years || Open
+6 || Milkway_ || Digital || XPPen || 12 years || Open!
+7 || Nebular_Cloud || Traditional || Gouache/Acrylic || 11 years || Closed
+8 || NebularClouds_ || Digital || Wacom || 5 years || Open!
+9 || Neytirix || Digital || Display Tablet || 16 years || Open
+10 || SamDoesArt || Digital || Display Tablet || 19 years || Closed
+11 || Willy_wonder11 || Digital || Drawing Tablet || 5 years || Closed
+Sorted in an Descending order.
+======================================
+0 | SamDoesArt | Digital
+1 | RockAndStoneDRG | Digital
+2 | pompompurinFan345 | Digital
+3 | Neytirix | Digital
+4 | NebularClouds_ | Digital
+5 | Nebular_Cloud | Traditional
+6 | Milkway_ | Digital
+7 | lovabledork12_ | Traditional
+8 | justasheee | Digital
+9 | heartmush | Digital
+10 | cranking90s_ | Traditional
+======================================
+Program closed...

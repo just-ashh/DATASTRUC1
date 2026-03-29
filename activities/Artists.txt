@@ -1,23 +1,28 @@
-Willy_wonder11
-Digital
-Drawing Tablet
-5
-Closed
-stranger_danger14
-Traditional
-Pencil/Ink
-5
-Open
 SamDoesArt
 Digital
 Display Tablet
 19
+Closed
+RockAndStoneDRG
+Digital
+Viekk
+2
+Closed!
+pompompurinFan345
+Digital
+Display tablet
+2
 Closed
 Neytirix
 Digital
 Display Tablet
 16
 Open
+NebularClouds_
+Digital
+Wacom
+5
+Open!
 Nebular_Cloud
 Traditional
 Gouache/Acrylic
@@ -33,11 +38,6 @@ Traditional
 Ink/Acrylic Pens
 9
 Open
-justshinichi
-Digital
-Drawing Tablet
-15
-Closed
 justasheee
 Digital
 Huion Display Kamvas
