@@ -1,0 +1,75 @@
+=== Quiz session for Claire ===
+
+Q1: Which vocaloid has a pair of red goggles and green hair?
+A. flower
+B. IA
+C. GUMI
+Player answer: C
+Result: Correct
+
+Q2: What is Kagamine Len’s signature color?
+A. Blue
+B. Yellow
+C. Red
+Player answer: B
+Result: Correct
+
+Q3: Which Vocaloid is often depicted holding a leek?
+A. Miku
+B. Teto
+C. IA
+Player answer: A
+Result: Correct
+
+Q4: Who was the first Japanese Vocaloid voicebank to release?
+A. Miku
+B. Kaito
+C. Meiko
+Player answer: C
+Result: Correct
+
+Q5: Which Vocaloid has a voice provider from the band SEKAI NO OWARI?
+A. Fukase
+B. Kaito
+C. Len
+Player answer: A
+Result: Correct
+
+Q6: Which Vocaloid voicebank was developed by Yamaha?
+A. All Vocaloids
+B. Only Miku
+C. Only early Vocaloids
+Player answer: A
+Result: Correct
+
+Q7: Who is oftenly paired with Kagamine Rin?
+A. Meiko
+B. Len
+C. Miku
+Player answer: B
+Result: Correct
+
+Q8: Which vocaloid is famous for "World is Mine"?
+A. Luka
+B. Rin
+C. Miku
+Player answer: C
+Result: Correct
+
+Q9: Which Vocaloid has long pink hair and a more mature design?
+A. Rin
+B. Luka
+C. IA
+Player answer: B
+Result: Correct
+
+Q10: Which Vocaloid has a red-themed outfit and is one of the earliest voicebanks?
+A. Meiko
+B. IA
+C. flower
+Player answer: A
+Result: Correct
+
+Final Score: 10/10
+===============================
+
