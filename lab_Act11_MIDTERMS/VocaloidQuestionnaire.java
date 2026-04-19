@@ -1,11 +1,12 @@
-package lab_Act11_MIDTERMS;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.Stack;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 
 class Question {
@@ -104,7 +105,8 @@ public class VocaloidQuestionnaire {
 
     // load questions from the txt
     public static void loadQuestions() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("questions.txt"))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(new FileInputStream("questions.txt"), "UTF-8"))) {
 
             String line;
             while ((line = reader.readLine()) != null) {
@@ -139,13 +141,11 @@ public class VocaloidQuestionnaire {
             return;
         }
 
-        // display all players registered
         System.out.println("\nPlayers:");
         for (int i = 0; i < players.size(); i++) {
             System.out.println((i + 1) + ". " + players.get(i));
         }
 
-        // select registered player
         System.out.print("Select player number: ");
         int choice = sc.nextInt();
         sc.nextLine();
@@ -158,78 +158,135 @@ public class VocaloidQuestionnaire {
         String currentPlayer = players.get(choice - 1);
         System.out.println("Player selected: " + currentPlayer);
 
-        // randomize the 30 questions
         Collections.shuffle(questions);
+        ArrayList<Question> quiz = new ArrayList<>(questions.subList(0, Math.min(10, questions.size())));
+
+        Stack<Integer> backStack = new Stack<>();
+        Stack<Integer> nextStack = new Stack<>();
+
+        char[] userAnswers = new char[quiz.size()];
+        boolean[] answered = new boolean[quiz.size()];
+
+        int current = 0;
+        int score = 0;
 
         FileWriter logWriter = null;
         try {
-            logWriter = new FileWriter(currentPlayer + "Usersession.txt", true); // one log per player
+            logWriter = new FileWriter(currentPlayer + "Usersession.txt", true);
             logWriter.write("=== Quiz session for " + currentPlayer + " ===\n");
         } catch (IOException e) {
             System.out.println("Error creating session log.");
         }
 
-        int score = 0;
         System.out.println("\nStarting quiz...");
 
-        // ask 10 questions
-        for (int i = 0; i < 10 && i < questions.size(); i++) {
+        while (true) {
 
-            Question q = questions.get(i);
+            Question q = quiz.get(current);
 
-            System.out.println("\nQ" + (i + 1) + ": " + q.question);
+            System.out.println("\nQ" + (current + 1) + ": " + q.question);
             System.out.println("A. " + q.A);
             System.out.println("B. " + q.B);
             System.out.println("C. " + q.C);
 
-            System.out.print("Answer: ");
-            char answer;
-
-            try {
-                answer = sc.nextLine().toUpperCase().charAt(0);
-            } catch (Exception e) {
-                answer = ' ';
-            }
-
-            // ensure answers are correctly inputted
-            while (answer != 'A' && answer != 'B' && answer != 'C') {
-                System.out.print("Invalid! Enter A, B, or C: ");
-                answer = sc.nextLine().toUpperCase().charAt(0);
-            }
-
-            // log and write in player inputs
-            try {
-                logWriter.write("Q" + (i + 1) + ": " + q.question + "\n");
-                logWriter.write("A. " + q.A + "\n");
-                logWriter.write("B. " + q.B + "\n");
-                logWriter.write("C. " + q.C + "\n");
-                logWriter.write("Player answer: " + answer + "\n");
-
-                if (answer == q.answer) {
-                    logWriter.write("Result: Correct\n\n");
+            if (answered[current]) {
+                System.out.println("Your answer: " + userAnswers[current]);
+                if (userAnswers[current] == q.answer) {
+                    System.out.println("Result: Correct!");
                 } else {
-                    logWriter.write("Result: Wrong (Correct answer: " + q.answer + ")\n\n");
+                    System.out.println("Result: Wrong! (Correct: " + q.answer + ")");
                 }
-            } catch (IOException e) {
-                System.out.println("Error writing to session log.");
             }
 
-            if (answer == q.answer) {
-                System.out.println("Correct!");
-                score++;
-            } else {
-                System.out.println("Wrong! Correct answer: " + q.answer);
+            System.out.println("""
+                    \n[A/B/C] Answer
+                    [N] Next
+                    [P] Previous
+                    [X] End Quiz
+                    """);
+
+            String line = sc.nextLine().trim().toUpperCase();
+
+            char input = (line.isEmpty()) ? ' ' : line.charAt(0);
+
+            //user answer
+            if (input == 'A' || input == 'B' || input == 'C') {
+
+                if (answered[current]) {
+                    System.out.println("You've already answered this question.");
+                    continue;
+                }
+
+                userAnswers[current] = input;
+                answered[current] = true;
+
+                try {
+                    if (logWriter != null) {
+                        logWriter.write("Q" + (current + 1) + ": " + q.question + "\n");
+                        logWriter.write("A. " + q.A + "\n");
+                        logWriter.write("B. " + q.B + "\n");
+                        logWriter.write("C. " + q.C + "\n");
+                        logWriter.write("Player answer: " + input + "\n");
+
+                        if (input == q.answer) {
+                            logWriter.write("Result: Correct\n\n");
+                        } else {
+                            logWriter.write("Result: Wrong (Correct: " + q.answer + ")\n\n");
+                        }
+                    }
+                } catch (IOException e) {
+                    System.out.println("Error writing to log...");
+                }
+
+                if (input == q.answer) {
+                    System.out.println("Correct!");
+                    score++;
+                } else {
+                    System.out.println("Wrong! Correct answer: " + q.answer);
+                }
+            }
+
+            //next question
+            else if (input == 'N') {
+                if (current < quiz.size() - 1) {
+                    backStack.push(current);
+                    current++;
+                    nextStack.clear();
+                } else {
+                    System.out.println("You're at the last question already.");
+                }
+            }
+
+            //go back to last question
+            else if (input == 'P') {
+                if (!backStack.isEmpty()) {
+                    nextStack.push(current);
+                    current = backStack.pop();
+                } else {
+                    System.out.println("No previous question.");
+                }
+            }
+
+            //close program
+            else if (input == 'X') {
+                break;
+            }
+
+            else {
+                System.out.println("Invalid input.");
             }
         }
 
-        System.out.println("\nFinal Score: " + score + "/10");
+        System.out.println("\nFinal Score: " + score + "/" + quiz.size());
 
         try {
-            logWriter.write("Final Score: " + score + "/10\n");
-            logWriter.write("===============================\n\n");
-            logWriter.close();
+            if (logWriter != null) {
+                logWriter.write("Final Score: " + score + "/" + quiz.size() + "\n");
+                logWriter.write("===============================\n\n");
+                logWriter.close();
+            }
         } catch (IOException e) {
-            System.out.println("Error closing session log.");
+            System.out.println("Error saving session log.");
         }
 
         saveScore(currentPlayer, score);
