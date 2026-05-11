@@ -164,9 +164,13 @@ public class VocaloidQuestionnaire {
         Stack<Integer> backStack = new Stack<>();
         Stack<Integer> nextStack = new Stack<>();
 
-        char[] userAnswers = new char[quiz.size()];
-        boolean[] answered = new boolean[quiz.size()];
+        ArrayList<Character> userAnswers = new ArrayList<>();
+        ArrayList<Boolean> answered = new ArrayList<>();
 
+        for (int i = 0; i < quiz.size(); i++) {
+            userAnswers.add(' ');
+            answered.add(false);
+        }
         int current = 0;
         int score = 0;
 
@@ -182,6 +186,11 @@ public class VocaloidQuestionnaire {
 
         while (true) {
 
+            if (current < 0 || current >= quiz.size()) {
+                System.out.println("No more questions available.");
+                break;
+            }
+
             Question q = quiz.get(current);
 
             System.out.println("\nQ" + (current + 1) + ": " + q.question);
@@ -189,9 +198,9 @@ public class VocaloidQuestionnaire {
             System.out.println("B. " + q.B);
             System.out.println("C. " + q.C);
 
-            if (answered[current]) {
-                System.out.println("Your answer: " + userAnswers[current]);
-                if (userAnswers[current] == q.answer) {
+            if (answered.get(current)) {
+                System.out.println("Your answer: " + userAnswers.get(current));
+                if (userAnswers.get(current) == q.answer) {
                     System.out.println("Result: Correct!");
                 } else {
                     System.out.println("Result: Wrong! (Correct: " + q.answer + ")");
@@ -202,6 +211,9 @@ public class VocaloidQuestionnaire {
                     \n[A/B/C] Answer
                     [N] Next
                     [P] Previous
+                    [E] Edit Question
+                    [D] Delete Question
+                    [Q] Add Question
                     [X] End Quiz
                     """);
 
@@ -209,16 +221,16 @@ public class VocaloidQuestionnaire {
 
             char input = (line.isEmpty()) ? ' ' : line.charAt(0);
 
-            //user answer
+            // user answer
             if (input == 'A' || input == 'B' || input == 'C') {
 
-                if (answered[current]) {
+                if (answered.get(current)) {
                     System.out.println("You've already answered this question.");
                     continue;
                 }
 
-                userAnswers[current] = input;
-                answered[current] = true;
+                userAnswers.set(current, input);
+                answered.set(current, true);
 
                 try {
                     if (logWriter != null) {
@@ -246,18 +258,20 @@ public class VocaloidQuestionnaire {
                 }
             }
 
-            //next question
+            // next question
             else if (input == 'N') {
-                if (current < quiz.size() - 1) {
-                    backStack.push(current);
-                    current++;
-                    nextStack.clear();
-                } else {
+
+                if (current + 1 >= quiz.size()) {
                     System.out.println("You're at the last question already.");
+                    continue;
                 }
+
+                backStack.push(current);
+                current++;
+                nextStack.clear();
             }
 
-            //go back to last question
+            // go back to last question
             else if (input == 'P') {
                 if (!backStack.isEmpty()) {
                     nextStack.push(current);
@@ -267,9 +281,92 @@ public class VocaloidQuestionnaire {
                 }
             }
 
-            //close program
+            // close program
             else if (input == 'X') {
                 break;
+            }
+
+            // edit current question
+            else if (input == 'E') {
+
+                Question editQ = quiz.get(current);
+
+                System.out.println("\n=== EDIT QUESTION ===");
+
+                System.out.print("New question: ");
+                editQ.question = sc.nextLine();
+
+                System.out.print("New Choice A: ");
+                editQ.A = sc.nextLine();
+
+                System.out.print("New Choice B: ");
+                editQ.B = sc.nextLine();
+
+                System.out.print("New Choice C: ");
+                editQ.C = sc.nextLine();
+
+                System.out.print("Correct answer (A/B/C): ");
+                editQ.answer = sc.nextLine().toUpperCase().charAt(0);
+
+                updateQuestionFile();
+
+                System.out.println("Question updated successfully!");
+            }
+
+            // delete current question
+            else if (input == 'D') {
+
+                questions.remove(quiz.get(current));
+                quiz.remove(current);
+
+                userAnswers.remove(current);
+                answered.remove(current);
+
+                updateQuestionFile();
+
+                System.out.println("Question deleted!");
+
+                if (quiz.isEmpty()) {
+                    System.out.println("No more questions left.");
+                    break;
+                }
+
+                if (current >= quiz.size()) {
+                    current = quiz.size() - 1;
+                }
+            }
+
+            // add new question
+            else if (input == 'Q') {
+
+                System.out.println("\n=== ADD QUESTION ===");
+
+                System.out.print("Question: ");
+                String question = sc.nextLine();
+
+                System.out.print("Choice A: ");
+                String A = sc.nextLine();
+
+                System.out.print("Choice B: ");
+                String B = sc.nextLine();
+
+                System.out.print("Choice C: ");
+                String C = sc.nextLine();
+
+                System.out.print("Correct answer (A/B/C): ");
+                char ans = sc.nextLine().toUpperCase().charAt(0);
+
+                Question newQ = new Question(question, A, B, C, ans);
+
+                questions.add(newQ);
+                quiz.add(newQ);
+
+                userAnswers.add(' ');
+                answered.add(false);
+
+                updateQuestionFile();
+
+                System.out.println("Question added successfully!");
             }
 
             else {
@@ -313,6 +410,25 @@ public class VocaloidQuestionnaire {
             }
         } catch (IOException e) {
             System.out.println("No scores saved yet.");
+        }
+    }
+
+    // rewrite questions.txt
+    public static void updateQuestionFile() {
+
+        try (FileWriter writer = new FileWriter("questions.txt")) {
+
+            for (Question q : questions) {
+
+                writer.write("Q: " + q.question + "\n");
+                writer.write("A. " + q.A + "\n");
+                writer.write("B. " + q.B + "\n");
+                writer.write("C. " + q.C + "\n");
+                writer.write(q.answer + "\n");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error updating questions file.");
         }
     }
 }

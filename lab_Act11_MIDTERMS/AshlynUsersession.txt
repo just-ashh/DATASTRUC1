@@ -1,0 +1,85 @@
+=== Quiz session for Ashlyn ===
+Q1: Who is the most popular Vocaloid?
+A. Miku
+B. Rin
+C. Luka
+Player answer: A
+Result: Correct
+
+Final Score: 1/10
+===============================
+
+=== Quiz session for Ashlyn ===
+Q1: Who is the most popular Vocaloid?
+A. Miku
+B. Rin
+C. Luka
+Player answer: A
+Result: Correct
+
+Q2: Which Vocaloid is commonly linked with the song "Matryoshka"?
+A. GUMI
+B. Luka
+C. Meiko
+Player answer: A
+Result: Correct
+
+Q3: Which vocaloid has a pink and black design and sings English songs well?
+A. Luka
+B. Kaito
+C. Meiko
+Player answer: A
+Result: Correct
+
+Q4: What is Kagamine Len’s signature color?
+A. Blue
+B. Yellow
+C. Red
+Player answer: B
+Result: Correct
+
+Q5: What is Luka's main color?
+A. Blue
+B. Pink
+C. Yellow
+Player answer: C
+Result: Wrong (Correct: B)
+
+Q6: Which Vocaloid has a voice provider from the band SEKAI NO OWARI?
+A. Fukase
+B. Kaito
+C. Len
+Player answer: A
+Result: Correct
+
+Q7: Which Vocaloid song is known for its extremely fast lyrics?
+A. Rolling Girl
+B. Six Trillion Years and an Overnight Story
+C. Melt
+Player answer: A
+Result: Wrong (Correct: B)
+
+Q8: Which character is part of the Kagamine duo?
+A. IA
+B. Len
+C. GUMI
+Player answer: C
+Result: Wrong (Correct: B)
+
+Q9: When was the last Miku Expo performed in the Philippines, Manila?
+A. November 16, 2025
+B. November 24, 2025
+C. October 15, 2025
+Player answer: A
+Result: Correct
+
+Q10: Which vocaloid is known for her twin-tail hairstyle?
+A. Miku
+B. Luka
+C. IA
+Player answer: A
+Result: Correct
+
+Final Score: 7/10
+===============================
+
